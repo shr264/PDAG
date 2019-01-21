@@ -25,11 +25,11 @@ This file contains functions that calculate various metrics of interest, especia
 
 ### simulations.R
 
-This file contains the code to generate the simualtions reported in the paper. 
+This file contains the code to generate the simualtions reported in the paper.
 
 ## Example
 
-To generate all the data for the tables, simlipy open up bash and type:
+To generate all the data for the tables, open up bash and type:
 ```
 Rscript simulations.R
 ```
@@ -38,12 +38,11 @@ In particular, the lines that generates Table 1 are:
 ```
 # Table 1
 generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2'),
-Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
-'genB_mult_Ecoli1','genB_mult_Ecoli2'),
-Ns = c(40,50,100,200),
-Seeds = 1:20,
-m = 2,
-m1 = 25)
+              Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3', 'genB_mult_Ecoli1','genB_mult_Ecoli2'),
+              Ns = c(40,50,100,200),
+              Seeds = 1:20,
+              m = 2,
+              m1 = 25)
 ```
 
 # Authors
