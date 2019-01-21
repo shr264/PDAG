@@ -29,11 +29,15 @@ This file contains the code to generate the simualtions reported in the paper.
 
 ## Example
 
-To generate Table 1, simlipy open up simulations.R and run the following lines:
+To generate all the data for the tables, simlipy open up bash and type:
+```
+Rscript simulations.R
+```
+In particular, the lines that generates Table 1 are:
+
 ```
 # Table 1
-generate_tables(Methods = c('pcalg_custom','ccdr_paper','ccdr_paper_t','ccdr_custom',
-'ccdr_custom_ll','partial2'),
+generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2'),
 Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
 'genB_mult_Ecoli1','genB_mult_Ecoli2'),
 Ns = c(40,50,100,200),
