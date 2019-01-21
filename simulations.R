@@ -11,6 +11,7 @@ library(caret)
 library(partitionDAG)
 source('metrics_functions.R')
 source('data_generating_functions.R')
+source('other_methods.R')
 load('amat.Rdata')
 set.seed(12345)
 
@@ -71,8 +72,7 @@ generate_tables = function(Methods,Btypes,Ns,Seeds, m = NULL, m1=NULL, m2=NULL, 
 }
 
 # Table 1
-generate_tables(Methods = c('pcalg_custom','ccdr_paper','ccdr_paper_t','ccdr_custom',
-                            'ccdr_custom_ll','partial2'),
+generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2'),
                 Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
                            'genB_mult_Ecoli1','genB_mult_Ecoli2'),
                 Ns = c(40,50,100,200),
@@ -81,7 +81,7 @@ generate_tables(Methods = c('pcalg_custom','ccdr_paper','ccdr_paper_t','ccdr_cus
                 m1 = 25)
 
 # Table 2
-generate_tables(Methods = c('pcalg_custom','ccdr_custom',
+generate_tables(Methods = c('pcalg_custom','ccdr_paper_t',
                             'partial2','partial3','partial4'),
                 Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
                            'genB_mult_Ecoli1','genB_mult_Ecoli2'),
@@ -100,7 +100,7 @@ generate_tables(Methods = c('partial2'),
                 m1 = 5)
 
 # Table 4
-generate_tables(Methods = c('pcalg_custom','ccdr_custom',
+generate_tables(Methods = c('pcalg_custom','ccdr_paper_t',
                             'partial2','partial3','partial4'),
                 Btypes = c('genB_rand_100'),
                 Ns = c(50,75,100,200),
@@ -111,7 +111,7 @@ generate_tables(Methods = c('pcalg_custom','ccdr_custom',
                 m3 = 75)
 
 # Table 5
-generate_tables(Methods = c('pcalg_custom','ccdr_custom',
+generate_tables(Methods = c('pcalg_custom','ccdr_paper_t',
                             'partial2','partial3','partial4'),
                 Btypes = c('genB_rand_200'),
                 Ns = c(100,150,200,400),
