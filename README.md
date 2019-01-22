@@ -3,17 +3,19 @@ This contains all the simulation code for PDAG. The main function used in genera
 
 ## Files
 
-This repo contains the following files:
+A few of the key files in this repo include:
 * amat.Rdata
 * data_generating_functions.R
 * metric_functions.R
 * simulations.R
+* pDag_dairy_cattle_data.pdf
+* pDag_dairy_cattle_data.Rmd
 
-## Details
+## Details on key Files
 
 ### amat.Rdata
 
-This file contains the adjacency matrices for Yeast1, Yeast2, Yeast3, Ecoli1, Ecoli2 from the DREAM3 challenge
+This file contains the adjacency matrices for Yeast1, Yeast2, Yeast3, Ecoli1, Ecoli2 from the DREAM3 challenge.
 
 ### data_generating_functions.R
 
@@ -25,7 +27,15 @@ This file contains functions that calculate various metrics of interest, especia
 
 ### simulations.R
 
-This file contains the code to generate the simualtions reported in the paper.
+This file contains the code to generate the simulations reported in the paper.
+
+### pDag_dairy_cattle_data.Rmd
+
+This file contains the code to conduct the analysis of the dairy cattle data.
+
+### pDag_dairy_cattle_data.pdf
+
+This file contains the output for the analysis of the dairy cattle data.
 
 ## Example
 
