@@ -1,0 +1,78 @@
+---
+title: "PartitionDAG Real Data Analysis"
+author: "Syed Rahman"
+date: "1/21/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MASS)
+library(ggplot2)
+library(Matrix)
+library(igraph)
+library(ggm)
+library(sparsebn)
+library(lassoshooting)
+library(ggm)
+library(partitionDAG)
+library(dplyr)
+source('graph_plotting_prep.R')
+```
+
+## Partition DAG dairy cattle data
+
+This script includes the dairy cattle data analysis for the partition-DAG paper. 
+
+```{r data_prep, echo=FALSE}
+data = read.csv2('real_data.csv')
+rand_ordr = c(1,2,sample(3:6,4),sample(7:14,8),sample(15:21,7),sample(22:28,7),sample(29:30,2))
+inv_rand_ordr = invPerm(rand_ordr)
+data = data[,rand_ordr]
+```
+
+### 5 group network
+
+In this section we run partition Dag with 5 groups:
+
+```{r network5, echo=TRUE, warning=FALSE, message=FALSE, error=FALSE, results='hide' }
+lambda = 4
+B = partitionDAG::partial5(X = as.matrix(data),
+                           l = lambda, 
+                           m1 = 6, 
+                           m2 = 14, 
+                           m3 = 21, 
+                           m4 = 28)$B
+B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
+colnames(B) = colnames(data)
+row.names(B) = colnames(data)
+graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
+plot(graphB, layout = get_coords(5), vertex.size=15, vertex.label.dist = .1, 
+     vertex.label.cex = 0.5, edge.arrow.size = 0.5)
+```
+
+### 10 group network
+
+In this section we run partition Dag with 10 groups:
+
+```{r network10, echo=TRUE, warning=FALSE, message=FALSE, error=FALSE, results='hide'}
+lambda = 4
+B = partitionDAG::partial10(X = as.matrix(data),
+                            l = lambda, 
+                            m1 = 2, 
+                            m2 = 3, 
+                            m3 = 4, 
+                            m4 = 6, 
+                            m5 = 10,
+                            m6 = 14, 
+                            m7 = 21, 
+                            m8 = 23, 
+                            m9 = 28)$B
+B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
+colnames(B) = colnames(data)
+row.names(B) = colnames(data)
+graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
+plot(graphB, layout = get_coords(10), vertex.size=15, vertex.label.dist = .1,
+     vertex.label.cex = 0.5, edge.arrow.size = 0.5)
+```
+
