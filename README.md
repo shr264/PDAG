@@ -1,5 +1,12 @@
 # PDAG
-This contains all the simulation code for PDAG. The main function used in generating the tables is located in simulations.R. This requires installation of the partitionDAG package, which in turn requires the pdagDFS package.
+This contains all the simulation code for PDAG. The main function used in generating the tables is located in simulations.R. This requires installation of the partitionDAG package, which in turn requires the pdagDFS package. To install these packages, please type the following commands into R:
+
+```
+install.packages("devtools")
+library(devtools)
+install_github("shr264/pdagDFS")
+install_github("shr264/partitionDAG")
+```
 
 ## Files
 
