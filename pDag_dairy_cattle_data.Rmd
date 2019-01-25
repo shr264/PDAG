@@ -44,6 +44,11 @@ B = partitionDAG::partial5(X = as.matrix(data),
                            m3 = 21, 
                            m4 = 28)$B
 B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
+colnames(B) = colnames(data)
+row.names(B) = colnames(data)
+graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
+plot(graphB, layout = get_coords(5), vertex.size=15, vertex.label.dist = .1,
+     vertex.label.cex = 0.5, edge.arrow.size = 0.5)
 
 
 ```
