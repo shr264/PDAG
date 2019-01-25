@@ -100,7 +100,7 @@ generate_tables(Methods = c('partial2'),
                 m1 = 5)
 
 # Table 4
-generate_tables(Methods = c('pcalg_custom','ccdr_paper_t',
+generate_tables(Methods = c('pcalg_custom',
                             'partial2','partial3','partial4'),
                 Btypes = c('genB_rand_100'),
                 Ns = c(50,75,100,200),
@@ -111,7 +111,7 @@ generate_tables(Methods = c('pcalg_custom','ccdr_paper_t',
                 m3 = 75)
 
 # Table 5
-generate_tables(Methods = c('pcalg_custom','ccdr_paper_t',
+generate_tables(Methods = c('pcalg_custom',
                             'partial2','partial3','partial4'),
                 Btypes = c('genB_rand_200'),
                 Ns = c(100,150,200,400),
