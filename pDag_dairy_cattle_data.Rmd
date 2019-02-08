@@ -26,7 +26,8 @@ This script includes the dairy cattle data analysis for the partition-DAG paper.
 
 ```{r data_prep, echo=FALSE}
 data = read.csv2('data/real_data.csv')
-rand_ordr = c(1,2,sample(3:6,4),sample(7:14,8),sample(15:21,7),sample(22:28,7),sample(29:30,2))
+rand_ordr = c(1,2,3,4,sample(5:6,2),sample(7:10,4),sample(11:14,4),sample(15:21,7),
+               sample(22:23,2),sample(24:28,5),sample(29:30,2))
 inv_rand_ordr = invPerm(rand_ordr)
 data = data[,rand_ordr]
 ```
@@ -43,9 +44,9 @@ B = partitionDAG::partial5(X = as.matrix(data),
                            m2 = 14, 
                            m3 = 21, 
                            m4 = 28)$B
-B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
 colnames(B) = colnames(data)
 row.names(B) = colnames(data)
+B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
 graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
 plot(graphB, layout = get_coords(5), vertex.size=15, vertex.label.dist = .1,
      vertex.label.cex = 0.5, edge.arrow.size = 0.5)
@@ -70,9 +71,9 @@ B = partitionDAG::partial10(X = as.matrix(data),
                             m7 = 21, 
                             m8 = 23, 
                             m9 = 28)$B
-B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
 colnames(B) = colnames(data)
 row.names(B) = colnames(data)
+B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
 graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
 plot(graphB, layout = get_coords(10), vertex.size=15, vertex.label.dist = .1,
      vertex.label.cex = 0.5, edge.arrow.size = 0.5)
