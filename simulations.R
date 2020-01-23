@@ -72,7 +72,7 @@ generate_tables = function(Methods,Btypes,Ns,Seeds, m = NULL, m1=NULL, m2=NULL, 
   return(table1)
 }
 
-ncores <- 6
+ncores <- 20
 
 # Table 1
 # generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2', 'lingam_custom'),
