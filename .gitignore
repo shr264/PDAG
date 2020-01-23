@@ -36,3 +36,11 @@ vignettes/*.pdf
 
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
+
+# Sbatch files
+*.sbatch
+
+# Rdata files
+*.RData
+*.rData
+*.Rdata
