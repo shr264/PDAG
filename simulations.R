@@ -72,7 +72,7 @@ generate_tables = function(Methods,Btypes,Ns,Seeds, m = NULL, m1=NULL, m2=NULL, 
 }
 
 # Table 1
-generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2'),
+generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2'),
                 Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
                            'genB_mult_Ecoli1','genB_mult_Ecoli2'),
                 Ns = c(40,50,100,200),
@@ -82,7 +82,8 @@ generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2'),
 
 # Table 2
 generate_tables(Methods = c('pcalg_custom','ccdr_paper_t',
-                            'partial2','partial3','partial4'),
+                            'partial2','partial3','partial4',
+                            'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4'),
                 Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
                            'genB_mult_Ecoli1','genB_mult_Ecoli2'),
                 Ns = c(40,50,100,200),
@@ -101,7 +102,8 @@ generate_tables(Methods = c('partial2'),
 
 # Table 4
 generate_tables(Methods = c('pcalg_custom',
-                            'partial2','partial3','partial4'),
+                            'partial2','partial3','partial4',
+                            'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4'),
                 Btypes = c('genB_rand_100'),
                 Ns = c(50,75,100,200),
                 Seeds = 1:20,
@@ -112,7 +114,8 @@ generate_tables(Methods = c('pcalg_custom',
 
 # Table 5
 generate_tables(Methods = c('pcalg_custom',
-                            'partial2','partial3','partial4'),
+                            'partial2','partial3','partial4',
+                            'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4'),
                 Btypes = c('genB_rand_200'),
                 Ns = c(100,150,200,400),
                 Seeds = 1:20,
