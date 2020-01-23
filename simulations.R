@@ -9,6 +9,7 @@ library(parallel)
 library(igraph)
 library(caret)
 library(partitionDAG)
+library(foreach)
 source('metrics_functions.R')
 source('data_generating_functions.R')
 source('other_methods.R')
@@ -71,56 +72,164 @@ generate_tables = function(Methods,Btypes,Ns,Seeds, m = NULL, m1=NULL, m2=NULL, 
   return(table1)
 }
 
+ncores <- 6
+
 # Table 1
-generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2'),
-                Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
-                           'genB_mult_Ecoli1','genB_mult_Ecoli2'),
-                Ns = c(40,50,100,200),
-                Seeds = 1:20,
-                m = 2,
-                m1 = 25)
+# generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2', 'lingam_custom'),
+#                 Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
+#                            'genB_mult_Ecoli1','genB_mult_Ecoli2'),
+#                 Ns = c(40,50,100,200),
+#                 Seeds = 1:20,
+#                 m = 2,
+#                 m1 = 25)
+
+
+values = expand.grid(
+  list(
+    Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2', 'lingam_custom'),
+    nlambda = c(30),
+    Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
+              'genB_mult_Ecoli1','genB_mult_Ecoli2'),
+    Ns = c(40,50,100,200),
+    Seeds = 1:20,
+    m = c(2),
+    m1 = c(25)), stringsAsFactors = FALSE)
+
+
+#mapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1)
+
+table1 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1,
+                  mc.cores=ncores)
+table1 = unlist(table1)
+
+save(table1, file = "table1.RData")
 
 # Table 2
-generate_tables(Methods = c('pcalg_custom','ccdr_paper_t',
-                            'partial2','partial3','partial4',
-                            'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4'),
-                Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
-                           'genB_mult_Ecoli1','genB_mult_Ecoli2'),
-                Ns = c(40,50,100,200),
-                Seeds = 1:20,
-                m = 4,
-                m1 = 12,
-                m2 = 24,
-                m3 = 36)
+# generate_tables(Methods = c('pcalg_custom','ccdr_paper_t',
+#                             'partial2','partial3','partial4',
+#                             'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+#                             'lingam_custom'),
+#                 Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
+#                            'genB_mult_Ecoli1','genB_mult_Ecoli2'),
+#                 Ns = c(40,50,100,200),
+#                 Seeds = 1:20,
+#                 m = 4,
+#                 m1 = 12,
+#                 m2 = 24,
+#                 m3 = 36)
+
+values = expand.grid(list(
+Methods = c('pcalg_custom','ccdr_paper_t',
+             'partial2','partial3','partial4',
+             'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+             'lingam_custom'), 
+nlambda = c(30), 
+Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
+             'genB_mult_Ecoli1','genB_mult_Ecoli2'),
+  Ns = c(40,50,100,200),
+  Seeds = 1:20,
+  m = 4,
+  m1 = 12,
+  m2 = 24,
+  m3 = 36), stringsAsFactors = FALSE)
+
+#mapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1, m2=values$m2, m3=values$m3)
+
+table2 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1, m2=values$m2, m3=values$m3,
+                  mc.cores=ncores)
+table2 = unlist(table2)
+
+save(table2, file = "table2.RData")
 
 # Table 3
-generate_tables(Methods = c('partial2'),
-                Btypes = c('genB_Yeast1_informative','genB_Yeast1_noninformative'),
-                Ns = c(40,50,100,200),
-                Seeds = 1:20,
-                m1 = 5)
+# generate_tables(Methods = c('partial2'),
+#                 Btypes = c('genB_Yeast1_informative','genB_Yeast1_noninformative'),
+#                 Ns = c(40,50,100,200),
+#                 Seeds = 1:20,
+#                 m1 = 5)
+
+values = expand.grid(list(
+  Methods = c('partial2'),
+   nlambda = c(30),
+   Btypes = c('genB_Yeast1_informative','genB_Yeast1_noninformative'),
+   Ns = c(40,50,100,200),
+   Seeds = 1:20,
+   m1 = 5), stringsAsFactors = FALSE)
+
+#mapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m1=values$m1)
+
+table3 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m1=values$m1,
+                  mc.cores=ncores)
+table3 = unlist(table3)
+
+save(table3, file = "table3.RData")
 
 # Table 4
-generate_tables(Methods = c('pcalg_custom',
-                            'partial2','partial3','partial4',
-                            'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4'),
-                Btypes = c('genB_rand_100'),
-                Ns = c(50,75,100,200),
-                Seeds = 1:20,
-                m = 4,
-                m1 = 25,
-                m2 = 50,
-                m3 = 75)
+# generate_tables(Methods = c('pcalg_custom',
+#                             'partial2','partial3','partial4',
+#                             'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+#                             'lingam_custom'),
+#                 Btypes = c('genB_rand_100'),
+#                 Ns = c(50,75,100,200),
+#                 Seeds = 1:20,
+#                 m = 4,
+#                 m1 = 25,
+#                 m2 = 50,
+#                 m3 = 75)
 
-# Table 5
-generate_tables(Methods = c('pcalg_custom',
-                            'partial2','partial3','partial4',
-                            'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4'),
-                Btypes = c('genB_rand_200'),
-                Ns = c(100,150,200,400),
-                Seeds = 1:20,
-                m = 4,
-                m1 = 50,
-                m2 = 100,
-                m3 = 150)
+values = expand.grid(list(
+  Methods = c('pcalg_custom',
+              'partial2','partial3','partial4',
+              'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+              'lingam_custom'),
+  nlambda = c(30),
+  Btypes = c('genB_rand_100'),
+  Ns = c(50,75,100,200),
+  Seeds = 1:20,
+  m = 4,
+  m1 = 25,
+  m2 = 50,
+  m3 = 75), stringsAsFactors = FALSE)
+
+#mapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1, m2=values$m2, m3=values$m3)
+
+table4 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1, m2=values$m2, m3=values$m3,
+                  mc.cores=ncores)
+table4 = unlist(table4)
+
+save(table4, file = "table4.RData")
+
+# # Table 5
+# generate_tables(Methods = c('pcalg_custom',
+#                             'partial2','partial3','partial4',
+#                             'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+#                             'lingam_custom'),
+#                 Btypes = c('genB_rand_200'),
+#                 Ns = c(100,150,200,400),
+#                 Seeds = 1:20,
+#                 m = 4,
+#                 m1 = 50,
+#                 m2 = 100,
+#                 m3 = 150)
+
+values = expand.grid(list(
+  Methods = c('pcalg_custom',
+              'partial2','partial3','partial4',
+              'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+              'lingam_custom'),
+  Btypes = c('genB_rand_200'),
+  Ns = c(100,150,200,400),
+  Seeds = 1:20,
+  m = 4,
+  m1 = 50,
+  m2 = 100,
+  m3 = 150), stringsAsFactors = FALSE)
+
+#mapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1, m2=values$m2, m3=values$m3)
+
+table5 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1, m2=values$m2, m3=values$m3,
+                  mc.cores=ncores)
+table5 = unlist(table5)
+
+save(table5, file = "table5.RData")
 
