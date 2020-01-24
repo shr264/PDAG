@@ -56,7 +56,7 @@ genB_rand_100 <- function(p = 100, a = 0.3, b = 0.7, m = NULL, z = 0.05, s = 0.5
   return(list(adj = adj,B = B))
 }
 
-genB_rand_140 <- function(p = 40, a = 0.3, b = 0.7, m = NULL, z = 0.05, s = 0.5){
+genB_rand_40 <- function(p = 40, a = 0.3, b = 0.7, m = NULL, z = 0.05, s = 0.5){
   set.seed(12345)
   D = rep(1,p)
   plower = p*(p-1)/2

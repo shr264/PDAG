@@ -72,7 +72,28 @@ generate_tables = function(Methods,Btypes,Ns,Seeds, m = NULL, m1=NULL, m2=NULL, 
   return(table1)
 }
 
-ncores <- 20
+ncores <- 6
+
+# Test on p = 40
+
+values = expand.grid(list(
+  Methods = c('pcalg_custom',
+              'partial2','partial3','partial4',
+              'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+              'lingam_custom'),
+  nlambda = c(30),
+  Btypes = c('genB_rand_40'),
+  Ns = c(50,75,100,200),
+  Seeds = 1:20,
+  m = 4,
+  m1 = 10,
+  m2 = 20,
+  m3 = 30), stringsAsFactors = FALSE)
+
+#mapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1, m2=values$m2, m3=values$m3)
+
+table0 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1, m2=values$m2, m3=values$m3,
+                  mc.cores=ncores)
 
 # Table 1
 # generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2', 'lingam_custom'),
