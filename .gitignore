@@ -4,8 +4,14 @@
 .Rhistory
 .Rapp.history
 
+.err
+.out
+
 # Session Data files
 .RData
+.rData
+.Rdata
+.rdata
 
 # Example code in package build process
 *-Ex.R
