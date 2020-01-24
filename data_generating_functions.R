@@ -56,6 +56,34 @@ genB_rand_100 <- function(p = 100, a = 0.3, b = 0.7, m = NULL, z = 0.05, s = 0.5
   return(list(adj = adj,B = B))
 }
 
+genB_rand_140 <- function(p = 40, a = 0.3, b = 0.7, m = NULL, z = 0.05, s = 0.5){
+  set.seed(12345)
+  D = rep(1,p)
+  plower = p*(p-1)/2
+  ## off-diagonals
+  T = diag(p)
+  T[upper.tri(T)] = 0
+  T[lower.tri(T)] = (ifelse(runif(plower)<s, -1, 1) *
+                       ifelse(runif(plower)<z,  1, 0) *
+                       runif(plower, a, b))
+  L = diag(1.0/sqrt(D)) %*% T   # cholesky factor
+  if(is.null(m)||(m==1)){
+    Border = sample(1:p)
+  } else {
+    M = floor(p/m)
+    Border = c()
+    pos = 1
+    while((pos+M+1)<p){
+      Border = append(Border,sample(pos:(pos+M-1),M))
+      pos = pos+M
+    }
+    Border = append(Border,sample(pos:p,p-pos+1))
+  }
+  B = L[Border,Border]
+  adj = (B!=0)
+  return(list(adj = adj,B = B))
+}
+
 genB_mult <- function(Yeast1, a = 0.3, b = 0.7, m = NULL){
   p = dim(Yeast1)[1]
   set.seed(12345)
