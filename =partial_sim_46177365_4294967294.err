@@ -12516,3 +12516,9 @@ In mclapply(seq_len(n), do_one, mc.preschedule = mc.preschedule,  :
 'n.comp' is too large: reset to 75
 'n.comp' is too large: reset to 50
 'n.comp' is too large: reset to 50
+Warning message:
+In mclapply(seq_len(n), do_one, mc.preschedule = mc.preschedule,  :
+  scheduled cores 16, 8, 20, 4, 12, 15, 14 encountered errors in user code, all values of the jobs will be affected
+Error in mcmapply(get_metrics_by_method, method = values$Methods, nlambda = values$nlambda,  : 
+  Zero-length inputs cannot be mixed with those of non-zero length
+Execution halted

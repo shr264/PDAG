@@ -72,7 +72,7 @@ generate_tables = function(Methods,Btypes,Ns,Seeds, m = NULL, m1=NULL, m2=NULL, 
   return(table1)
 }
 
-ncores <- 6
+ncores <- 20
 
 # Test on p = 40
 
@@ -124,9 +124,9 @@ table1 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$n
 
 save(table1, file = "table1.RData")
 
-table1 = unlist(table1)
+#table1 = unlist(table1)
 
-save(table1, file = "table1_1.RData")
+#save(table1, file = "table1_1.RData")
 
 # Table 2
 # generate_tables(Methods = c('pcalg_custom','ccdr_paper_t',
@@ -164,9 +164,9 @@ table2 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$n
 
 save(table2, file = "table2.RData")
 
-table2 = unlist(table2)
+#table2 = unlist(table2)
 
-save(table2, file = "table2_1.RData")
+#save(table2, file = "table2_1.RData")
 
 # Table 3
 # generate_tables(Methods = c('partial2'),
@@ -190,9 +190,9 @@ table3 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$n
 
 save(table3, file = "table3.RData")
 
-table3 = unlist(table3)
+#table3 = unlist(table3)
 
-save(table3, file = "table3_1.RData")
+#save(table3, file = "table3_1.RData")
 
 # Table 4
 # generate_tables(Methods = c('pcalg_custom',
@@ -228,9 +228,9 @@ table4 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$n
 
 save(table4, file = "table4.RData")
 
-table4 = unlist(table4)
+#table4 = unlist(table4)
 
-save(table4, file = "table4_1.RData")
+#save(table4, file = "table4_1.RData")
 
 # # Table 5
 # generate_tables(Methods = c('pcalg_custom',
@@ -265,7 +265,7 @@ table5 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$n
 
 save(table5, file = "table5.RData")
 
-table5 = unlist(table5)
+#table5 = unlist(table5)
 
-save(table5, file = "table5_1.RData")
+#save(table5, file = "table5_1.RData")
 
