@@ -18,20 +18,40 @@ get_metric = function(L, Lhat, i, debug = FALSE){
   list(tp = tp, tn = tn, fn = fn, fp = fp, fpr = fp/(fp+tn), tpr = tp/(tp+fn))
 }
 
-getL = function(B){
+cpDagtoDag = function(Bhat, B){
+  if(is.null(B)){
+    return(Bhat)
+  }
+  Bhat[Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0] = 0
+  
+  unif = runif(1)
+  if(unif < 0.5){x = c(1,0)
+  } else{x = c(0,1)}
+  
+  Bhat[Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B == 0] = x
+  
+  return(Bhat)
+  
+}
+
+
+getL = function(B, B_truth=NULL){
+  if(!is.null(B-truth)){
+    B = cpDagtoDag(B,B_truth) 
+  }
   B = (abs(B) != 0)*1
   L = lower.tri(B)*B - t(B*upper.tri(B))
   L = (L[lower.tri(L)])
   return(L)
 }
 
-getLhatlist = function(Bhatlist, debug = FALSE){
+getLhatlist = function(Bhatlist, B=NULL, debug = FALSE){
   Lhatlist = vector("list",length(Bhatlist))
   if(debug){
     message(Lhatlist)
   }
   for (i in 1:length(Bhatlist)){
-    Lhatlist[[i]] = getL(Bhatlist[[i]])
+    Lhatlist[[i]] = getL(Bhatlist[[i]], B_truth=B)
   }
   return(Lhatlist)
 }
@@ -46,7 +66,7 @@ get_avg_metrics2 = function(B,
                             seed,
                             debug=FALSE){
   L = getL(B)
-  Lhatlist = getLhatlist(Bhatlist)
+  Lhatlist = getLhatlist(Bhatlist, B)
   auc = rep(0,17)
   names_auc = rep('auc',17)
   for (j in c(-1,0,1)){
