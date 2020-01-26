@@ -92,10 +92,14 @@ values = expand.grid(list(
 
 #mapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1, m2=values$m2, m3=values$m3)
 
+print('table0')
+
 table0 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1, m2=values$m2, m3=values$m3,
                   mc.cores=ncores)
 
 print(table0)
+
+save(table0, file = "table0.RData")
 
 # Table 1
 # generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2', 'lingam_custom'),
