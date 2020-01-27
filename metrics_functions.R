@@ -22,13 +22,17 @@ cpDagtoDag = function(Bhat, B){
   if(is.null(B)){
     return(Bhat)
   }
-  Bhat[Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0] = 0
+  if(sum((Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0))>0){
+    Bhat[(Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0)] = 0
+  }
   
-  unif = runif(1)
-  if(unif < 0.5){x = c(1,0)
-  } else{x = c(0,1)}
-  
-  Bhat[Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B == 0] = x
+  if(sum(Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B == 0)>0){
+    unif = runif(1)
+    if(unif < 0.5){x = c(1,0)
+    } else{x = c(0,1)}
+    
+    Bhat[Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B == 0] = x
+  }
   
   return(Bhat)
   
