@@ -1,0 +1,641 @@
+Loading required package: igraph
+Loading required package: methods
+
+Attaching package: ‘igraph’
+
+The following objects are masked from ‘package:stats’:
+
+    decompose, spectrum
+
+The following object is masked from ‘package:base’:
+
+    union
+
+
+Attaching package: ‘ggm’
+
+The following object is masked from ‘package:igraph’:
+
+    pa
+
+Loading required package: sparsebnUtils
+
+Attaching package: ‘sparsebnUtils’
+
+The following object is masked from ‘package:MASS’:
+
+    select
+
+Loading required package: ccdrAlgorithm
+Loading required package: discretecdAlgorithm
+
+sparsebn v0.0.5, Copyright (c) 2016-2017
+	Bryon Aragam, University of California, Los Angeles
+	Jiaying Gu, University of California, Los Angeles
+	Dacheng Zhang, University of California, Los Angeles
+	Qing Zhou, University of California, Los Angeles
+	Fei Fu
+
+Please cite our work! Type citation("sparsebn") for details.
+---> Bugs? Please report any bugs at https://github.com/itsrainingdata/sparsebn/issues.
+
+Loading required package: lattice
+Loading required package: ggplot2
+Warning message:
+As of rlang 0.4.0, dplyr must be at least version 0.8.0.
+✖ dplyr 0.7.6 is too old for rlang 0.4.2.
+ℹ Please update dplyr with `install.packages("dplyr")`. 
+Warning message:
+In mclapply(seq_len(n), do_one, mc.preschedule = mc.preschedule,  :
+  scheduled cores 3, 2, 11, 10, 1, 9, 14, 7, 6, 15, 13, 5 encountered errors in user code, all values of the jobs will be affected
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+'n.comp' is too large: reset to 40
+'n.comp' is too large: reset to 40
+'n.comp' is too large: reset to 40
+'n.comp' is too large: reset to 40
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+Warning message:
+In mclapply(seq_len(n), do_one, mc.preschedule = mc.preschedule,  :
+  scheduled cores 15, 5, 10, 20, 12, 7, 17, 2, 4, 19, 9, 14 encountered errors in user code, all values of the jobs will be affected
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+'n.comp' is too large: reset to 40
+'n.comp' is too large: reset to 40
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+'n.comp' is too large: reset to 40
+'n.comp' is too large: reset to 40
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+A list of interventions was not specified: Assuming data is purely observational.
+Warning message:
+In mclapply(seq_len(n), do_one, mc.preschedule = mc.preschedule,  :
+  all scheduled cores encountered errors in user code
+Warning message:
+In mclapply(seq_len(n), do_one, mc.preschedule = mc.preschedule,  :
+  all scheduled cores encountered errors in user code
+'n.comp' is too large: reset to 50
+'n.comp' is too large: reset to 75
+'n.comp' is too large: reset to 50
+'n.comp' is too large: reset to 50
