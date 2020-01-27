@@ -32,8 +32,10 @@ get_metrics_by_method = function(method, nlambda, Btype, m, n, seed, m1=NULL,m2=
   time_vec = rep(0,nlambda)
   for(i in 1:length(lambda)){
     B_ = get(method)(X=X,l=lambda[i], a=alpha[i], m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
-    Bhatlist[[i]] = B_$B
-    time_vec[i] = B_$time
+    if(is.matrix(as.matrix(B_$B))){
+      Bhatlist[[i]] = B_$B
+      time_vec[i] = B_$time
+    } else {print(B_)}
   }
 
   return(get_avg_metrics2(B, Bhatlist, n, p, method, Btype, mean(time_vec), seed, debug=FALSE))
