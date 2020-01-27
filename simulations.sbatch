@@ -4,8 +4,8 @@
 #SBATCH -e=partial_sim_stats_%A_%a.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=shr264@ufl.edu
-#SBATCH --account=statistics
-#SBATCH --qos=statistics
+#SBATCH --account=informatics_inst
+#SBATCH --qos=informatics_inst
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --mem-per-cpu=2000mb
