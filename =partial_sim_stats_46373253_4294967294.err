@@ -639,3 +639,4 @@ In mclapply(seq_len(n), do_one, mc.preschedule = mc.preschedule,  :
 'n.comp' is too large: reset to 75
 'n.comp' is too large: reset to 50
 'n.comp' is too large: reset to 50
+slurmstepd: error: *** JOB 46373253 ON c8a-s5 CANCELLED AT 2020-01-28T00:21:08 ***
