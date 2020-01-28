@@ -26,9 +26,8 @@ pcalg_addBG2 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
                alpha=a, labels = V, verbose = FALSE)
   B = (as.matrix(as(pc.fit, "amat")))
   if(is.matrix(as.matrix(B))){
-    B = addBgKnowledge_helper(B, m1=0, m2=m1, m3=p)
-    diag(B) = 1   
-  }
+    B = addBgKnowledge_helper(B, m1=0, m2=m1, m3=p)}
+  diag(B) = 1   
   time = time - proc.time()[3]
   return(list(B=as.matrix(B),itr = 1, time = time))
 }
@@ -43,11 +42,11 @@ pcalg_addBG3 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
                alpha=a, labels = V, verbose = FALSE)
   B = (as.matrix(as(pc.fit, "amat")))
   if(is.matrix(as.matrix(B))){ 
-    B = addBgKnowledge_helper(B, m1=0, m2=m1, m3=p)
-    B = addBgKnowledge_helper(B, m1=m1, m2=m2, m3=p)
-    
-    diag(B) = 1
-  }
+    B = addBgKnowledge_helper(B, m1=0, m2=m1, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper(B, m1=m1, m2=m2, m3=p)}
+  diag(B) = 1
+  
   time = time - proc.time()[3]
   return(list(B=as.matrix(B),itr = 1, time = time))
 }
@@ -62,12 +61,12 @@ pcalg_addBG4 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
                alpha=a, labels = V, verbose = FALSE)
   B = (as.matrix(as(pc.fit, "amat")))
   if(is.matrix(as.matrix(B))){  
-    B = addBgKnowledge_helper(B, m1=0, m2=m1, m3=p)
-    B = addBgKnowledge_helper(B, m1=m1, m2=m2, m3=p)
-    B = addBgKnowledge_helper(B, m1=m2, m2=m3, m3=p)
-    
-    diag(B) = 1
-  }
+    B = addBgKnowledge_helper(B, m1=0, m2=m1, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper(B, m1=m1, m2=m2, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper(B, m1=m2, m2=m3, m3=p)}
+  diag(B) = 1
   time = time - proc.time()[3]
   return(list(B=as.matrix(B),itr = 1, time = time))
 }

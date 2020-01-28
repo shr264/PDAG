@@ -113,5 +113,16 @@ get_avg_metrics2 = function(B,
   auc[18] = seed
   names_auc[18] = 'seed'
   names(auc) = names_auc
+  
+  #save to object to disk
+  
+  save(auc, file = paste('auc', 
+                         'n' ,toString(n),
+                         'p' ,toString(p),
+                         'method' ,toString(method),
+                         'Btype' ,toString(Btype),
+                         'seed' ,toString(seed),
+                         '.RData', sep='_'))
+  
   return(auc)
 }
