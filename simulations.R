@@ -33,11 +33,15 @@ get_metrics_by_method = function(method, nlambda, Btype, m, n, seed, m1=NULL,m2=
   for(i in 1:length(lambda)){
     B_ = tryCatch(
       {get(method)(X=X,l=lambda[i], a=alpha[i], m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
+      }, error = function(c){
+        message(paste("No estimate"))
+        return(NA)}
+    )
         if(is.matrix(B_$B)){
           Bhatlist[[i]] = B_$B
           time_vec[i] = B_$time
         } else {print(B_)}
-        }, error = function(c){c$message})
+
   }
 
   return(get_avg_metrics2(B, Bhatlist, n, p, method, Btype, mean(time_vec), seed, debug=FALSE))
@@ -76,7 +80,7 @@ generate_tables = function(Methods,Btypes,Ns,Seeds, m = NULL, m1=NULL, m2=NULL, 
   return(table1)
 }
 
-ncores <- 20
+ncores <- 6
 
 # Test on p = 40
 
@@ -85,10 +89,10 @@ values = expand.grid(list(
               'partial2','partial3','partial4',
               'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
               'lingam_custom'),
-  nlambda = c(30),
+  nlambda = c(5),
   Btypes = c('genB_rand_40'),
   Ns = c(50,75,100,200),
-  Seeds = 1:20,
+  Seeds = 1:2,
   m = 4,
   m1 = 10,
   m2 = 20,
@@ -114,6 +118,8 @@ save(table0, file = "table0.RData")
 #                 m = 2,
 #                 m1 = 25)
 
+
+ncores <- 20
 print('table1')
 
 values = expand.grid(

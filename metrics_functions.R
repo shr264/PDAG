@@ -69,6 +69,38 @@ get_avg_metrics2 = function(B,
                             mean_time,
                             seed,
                             debug=FALSE){
+  if(is.null(B)){
+    auc = rep(0,17)
+    names_auc = rep('auc',17)
+    for (j in c(-1,0,1)){
+      auc[j+2] = NA
+      names_auc[j+2] = paste('norm_auc',toString(j),sep='')
+      auc[3+j+2] = NA
+      names_auc[3+j+2] = paste('auc',toString(j),sep='')
+      auc[6+j+2] = NA
+      names_auc[6+j+2] = paste('max_auc',toString(j),sep='')}
+    auc[10] = NA
+    names_auc[10] = 'avg_norm_auc'
+    auc[11] = NA
+    names_auc[11] = 'avg_auc'
+    auc[12] = NA
+    names_auc[12] = 'avg_max_auc'
+    auc[13] = n
+    names_auc[13] = 'n'
+    auc[14] = p
+    names_auc[14] = 'p'
+    auc[15] = method
+    names_auc[15] = 'method'
+    auc[16] = Btype
+    names_auc[16] = 'Btype'
+    auc[17] = mean_time
+    names_auc[17] = 'mean_time'
+    auc[18] = seed
+    names_auc[18] = 'seed'
+    names(auc) = names_auc
+    
+    return(auc)
+  }
   L = getL(B)
   Lhatlist = getLhatlist(Bhatlist, B)
   auc = rep(0,17)
@@ -113,16 +145,6 @@ get_avg_metrics2 = function(B,
   auc[18] = seed
   names_auc[18] = 'seed'
   names(auc) = names_auc
-  
-  #save to object to disk
-  
-  save(auc, file = paste('auc', 
-                         'n' ,toString(n),
-                         'p' ,toString(p),
-                         'method' ,toString(method),
-                         'Btype' ,toString(Btype),
-                         'seed' ,toString(seed),
-                         '.RData', sep='_'))
   
   return(auc)
 }
