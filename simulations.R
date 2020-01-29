@@ -1,3 +1,5 @@
+#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
 library(MASS)
 library(Matrix)
 library(ggm)

@@ -69,7 +69,20 @@ get_avg_metrics2 = function(B,
                             mean_time,
                             seed,
                             debug=FALSE){
-  if(is.null(B)){
+  
+  # check whether and NAs in return Bhatlist
+  
+  i = 1
+  while(i < length(Bhatlist)){
+    if(anyNA(Bhatlist[[i]])){
+      Bhatlist = Bhatlist[-i]
+    }
+    else{
+      i = i + 1
+    }
+  }
+  
+  if(length(Bhatlist)){
     auc = rep(0,17)
     names_auc = rep('auc',17)
     for (j in c(-1,0,1)){
