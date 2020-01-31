@@ -37,7 +37,7 @@ get_metrics_by_method = function(method, nlambda, Btype, m, n, seed, m1=NULL,m2=
       {get(method)(X=X,l=lambda[i], a=alpha[i], m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
       }, error = function(c){
         message(paste("No estimate"))
-        return(NA)}
+        return(list(B=NA,itr = 1, time = NA))}
     )
         if(is.matrix(B_$B)){
           Bhatlist[[i]] = B_$B
