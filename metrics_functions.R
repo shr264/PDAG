@@ -23,7 +23,7 @@ cpDagtoDag = function(Bhat, B){
     return(Bhat)
   }
   if(sum((Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0))>0){
-    Bhat[(Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0)] = 0
+    Bhat[t(Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0)] = 0
   }
   
   if(sum(Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B == 0)>0){
