@@ -262,6 +262,7 @@ values = expand.grid(list(
               'partial2','partial3','partial4',
               'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
               'lingam_custom'),
+  nlambda = c(30),
   Btypes = c('genB_rand_200'),
   Ns = c(100,150,200,400),
   Seeds = 1:20,

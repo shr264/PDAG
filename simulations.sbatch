@@ -8,7 +8,7 @@
 #SBATCH --qos=statistics
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
-#SBATCH --mem-per-cpu=2000mb
+#SBATCH --mem-per-cpu=4000mb
 #SBATCH -t 240:00:00
 [[ -d $SLURM_SUBMIT_DIR ]] & cd $SLURM_SUBMIT_DIR
 date;hostname;pwd

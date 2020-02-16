@@ -41911,3 +41911,8 @@ No estimate
 No estimate
 'n.comp' is too large: reset to 75
 No estimate
+No estimate
+No estimate
+Error in mcmapply(get_metrics_by_method, method = values$Methods, nlambda = values$nlambda,  : 
+  Zero-length inputs cannot be mixed with those of non-zero length
+Execution halted
