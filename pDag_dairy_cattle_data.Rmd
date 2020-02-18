@@ -48,8 +48,8 @@ colnames(B) = colnames(data)
 row.names(B) = colnames(data)
 B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
 graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
-plot(graphB, layout = get_coords(5), vertex.size=15, vertex.label.dist = .1,
-     vertex.label.cex = 0.5, edge.arrow.size = 0.5)
+plot(graphB, layout = get_coords(5), vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
+     vertex.label.cex = 0.5, edge.arrow.size = 0.25, edge.curved=.3)
 
 
 ```
@@ -75,7 +75,7 @@ colnames(B) = colnames(data)
 row.names(B) = colnames(data)
 B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
 graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
-plot(graphB, layout = get_coords(10), vertex.size=15, vertex.label.dist = .1,
-     vertex.label.cex = 0.5, edge.arrow.size = 0.5)
+plot(graphB, layout = get_coords(10), vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
+     vertex.label.cex = 0.5, edge.arrow.size = 0.25, edge.curved=.3)
 ```
 
