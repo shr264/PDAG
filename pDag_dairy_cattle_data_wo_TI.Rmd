@@ -1,5 +1,5 @@
 ---
-title: "PartitionDAG Real Data Analysis"
+title: "PartitionDAG Real Data Analysis without TI"
 author: "Syed Rahman"
 date: "1/21/2019"
 output: pdf_document
@@ -27,10 +27,10 @@ This script includes the dairy cattle data analysis for the partition-DAG paper.
 
 ```{r data_prep, echo=FALSE}
 data = read.csv2('data/real_data.csv')
-cols_to_keep = c(1,2,3,4,5,6,7,9,10,11,12,15,16,17,18,19,20,21,24,25,26,27,28,29,30)
+cols_to_keep = c(1,2,3,4,5,6,7,9,10,11,12,15,16,17,18,19,20,21,24,26,27,28,29,30)
 data = data[,cols_to_keep]
 rand_ordr = c(1,2,3,4,sample(5:6,2),sample(c(7,8,9),3),sample(10:11,2),sample(12:18,7),
-               sample(19:23,5),sample(24:25,2))
+               sample(19:22,4),sample(23:24,2))
 inv_rand_ordr = invPerm(rand_ordr)
 data = data[,rand_ordr]
 ```
@@ -46,16 +46,18 @@ B = partitionDAG::partial5(X = as.matrix(data),
                            m1 = 6, 
                            m2 = 11, 
                            m3 = 18, 
-                           m4 = 23)$B
+                           m4 = 22)$B
 colnames(B) = colnames(data)
 row.names(B) = colnames(data)
 B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
 graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
-plot(graphB, layout = coords5wTI(), vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
+plot(graphB, layout = coords5woTI() , vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
      vertex.label.cex = 0.5, edge.arrow.size = 0.25, edge.curved=.3)
 
 
 ```
+
+
 
 ### 10 group network
 
@@ -72,12 +74,12 @@ B = partitionDAG::partial9(X = as.matrix(data),
                             m5 = 9,
                             m6 = 11, 
                             m7 = 18, 
-                            m8 = 23)$B
+                            m8 = 22)$B
 colnames(B) = colnames(data)
 row.names(B) = colnames(data)
 B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
 graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
-plot(graphB, layout = coords9wTI(), vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
+plot(graphB, layout = coords9woTI(), vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
      vertex.label.cex = 0.5, edge.arrow.size = 0.25, edge.curved=.3)
 ```
 
