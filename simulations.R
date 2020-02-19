@@ -90,6 +90,7 @@ values = expand.grid(list(
   Methods = c('pcalg_custom',
               'partial2','partial3','partial4',
               'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+              'pcalg_addBG2_t','pcalg_addBG3_t','pcalg_addBG4_t',
               'lingam_custom'),
   nlambda = c(5),
   Btypes = c('genB_rand_40'),
@@ -126,7 +127,7 @@ print('table1')
 
 values = expand.grid(
   list(
-    Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2', 'lingam_custom'),
+    Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2', 'pcalg_addBG2_t','lingam_custom'),
     nlambda = c(30),
     Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
               'genB_mult_Ecoli1','genB_mult_Ecoli2'),
@@ -161,6 +162,7 @@ values = expand.grid(list(
 Methods = c('pcalg_custom','ccdr_paper_t',
              'partial2','partial3','partial4',
              'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+             'pcalg_addBG2_t','pcalg_addBG3_t','pcalg_addBG4_t',
              'lingam_custom'),
 nlambda = c(30),
 Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
@@ -225,6 +227,7 @@ values = expand.grid(list(
   Methods = c('pcalg_custom',
               'partial2','partial3','partial4',
               'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+              'pcalg_addBG2_t','pcalg_addBG3_t','pcalg_addBG4_t',
               'lingam_custom'),
   nlambda = c(30),
   Btypes = c('genB_rand_100'),
@@ -261,6 +264,7 @@ values = expand.grid(list(
   Methods = c('pcalg_custom',
               'partial2','partial3','partial4',
               'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
+              'pcalg_addBG2_t','pcalg_addBG3_t','pcalg_addBG4_t',
               'lingam_custom'),
   nlambda = c(30),
   Btypes = c('genB_rand_200'),

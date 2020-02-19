@@ -32,6 +32,22 @@ pcalg_addBG2 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
   return(list(B=as.matrix(B),itr = 1, time = time))
 }
 
+pcalg_addBG2_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
+  (n = dim(X)[1])
+  (p = dim(X)[2])
+  V = sapply(1:p,toString)
+  time = proc.time()[3]
+  pc.fit <- pc(suffStat = list(C = cor(X), n = n),
+               indepTest = gaussCItest, ## indep.test: partial correlations
+               alpha=a, labels = V, verbose = FALSE)
+  B = (as.matrix(as(pc.fit, "amat")))
+  if(is.matrix(as.matrix(B))){
+    B = addBgKnowledge_helper_t(B, m1=0, m2=m1, m3=p)}
+  diag(B) = 1   
+  time = time - proc.time()[3]
+  return(list(B=as.matrix(B),itr = 1, time = time))
+}
+
 pcalg_addBG3 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
   (n = dim(X)[1])
   (p = dim(X)[2])
@@ -45,6 +61,25 @@ pcalg_addBG3 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
     B = addBgKnowledge_helper(B, m1=0, m2=m1, m3=p)}
   if(is.matrix(as.matrix(B))){ 
     B = addBgKnowledge_helper(B, m1=m1, m2=m2, m3=p)}
+  diag(B) = 1
+  
+  time = time - proc.time()[3]
+  return(list(B=as.matrix(B),itr = 1, time = time))
+}
+
+pcalg_addBG3_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
+  (n = dim(X)[1])
+  (p = dim(X)[2])
+  V = sapply(1:p,toString)
+  time = proc.time()[3]
+  pc.fit <- pc(suffStat = list(C = cor(X), n = n),
+               indepTest = gaussCItest, ## indep.test: partial correlations
+               alpha=a, labels = V, verbose = FALSE)
+  B = (as.matrix(as(pc.fit, "amat")))
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper_t(B, m1=0, m2=m1, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper_t(B, m1=m1, m2=m2, m3=p)}
   diag(B) = 1
   
   time = time - proc.time()[3]
@@ -66,6 +101,26 @@ pcalg_addBG4 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
     B = addBgKnowledge_helper(B, m1=m1, m2=m2, m3=p)}
   if(is.matrix(as.matrix(B))){ 
     B = addBgKnowledge_helper(B, m1=m2, m2=m3, m3=p)}
+  diag(B) = 1
+  time = time - proc.time()[3]
+  return(list(B=as.matrix(B),itr = 1, time = time))
+}
+
+pcalg_addBG4_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
+  (n = dim(X)[1])
+  (p = dim(X)[2])
+  V = sapply(1:p,toString)
+  time = proc.time()[3]
+  pc.fit <- pc(suffStat = list(C = cor(X), n = n),
+               indepTest = gaussCItest, ## indep.test: partial correlations
+               alpha=a, labels = V, verbose = FALSE)
+  B = (as.matrix(as(pc.fit, "amat")))
+  if(is.matrix(as.matrix(B))){  
+    B = addBgKnowledge_helper_t(B, m1=0, m2=m1, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper_t(B, m1=m1, m2=m2, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper_t(B, m1=m2, m2=m3, m3=p)}
   diag(B) = 1
   time = time - proc.time()[3]
   return(list(B=as.matrix(B),itr = 1, time = time))
