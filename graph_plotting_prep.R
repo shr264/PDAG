@@ -105,6 +105,44 @@ coords5wTI <- function(){
   return(coords)
 }
 
+coords5wTIwoSM <- function(){
+  coords = matrix(0,ncol = 2, nrow = 24)
+  num2 = 0
+  for (i in 1:6){
+    coords[i,2] = 8
+    coords[i,1] = 2*num2
+    num2 = num2 + 1
+  }
+  num2 = -0.75
+  for (i in 7:10){
+    coords[i,2] = 7
+    coords[i,1] = 2*num2
+    num2 = num2 + 1
+  }
+  
+  num2 = 0.75
+  for (i in 11:17){
+    coords[i,2] = 6
+    coords[i,1] = 2*num2
+    num2 = num2 + 1
+  }
+  
+  num2 = -1
+  for (i in 18:22){
+    coords[i,2] = 5
+    coords[i,1] = 2*num2
+    num2 = num2 + 1
+  }
+  
+  num2 = 1
+  for (i in 23:24){
+    coords[i,2] = 4
+    coords[i,1] = 2*num2
+    num2 = num2 + 1
+  }
+  return(coords)
+}
+
 coords5woTI <- function(){
   coords = matrix(0,ncol = 2, nrow = 24)
   num2 = 0

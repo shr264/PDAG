@@ -59,7 +59,7 @@ cpDagtoDagW = function(Bhat, B){
 
 getL = function(B, B_truth=NULL){
   if(!is.null(B_truth)){
-    B = cpDagtoDag(B,B_truth) 
+    B = cpDagtoDagW(B,B_truth) 
   }
   B = (abs(B) != 0)*1
   L = lower.tri(B)*B - t(B*upper.tri(B))

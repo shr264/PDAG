@@ -30,10 +30,13 @@ This script includes the dairy cattle data analysis for the partition-DAG paper.
 
 ```{r data_prep, echo=FALSE}
 data = read.csv2('data/real_data.csv')
-cols_to_keep = c(1,2,3,4,5,6,7,9,10,11,12,15,16,17,18,19,20,21,24,25,26,27,28,29,30)
+cols_to_keep = c(1,2,3,4,5,6,7,9,10,11,15,16,17,18,19,20,21,24,25,26,27,28,29,30)
 data = data[,cols_to_keep]
-rand_ordr = c(1,2,3,4,sample(5:6,2),sample(c(7,8,9),3),sample(10:11,2),sample(12:18,7),
-               sample(19:23,5),sample(24:25,2))
+rand_ordr = 1:dim(data)[2]
+rand_ordr[1] = 3
+rand_ordr[3] = 1
+#rand_ordr = c(sample(c(1,2,3,4,5,6),6),sample(c(7,8,9),3),10,sample(11:17,7),
+#               sample(18:22,5),sample(23:24,2))
 inv_rand_ordr = invPerm(rand_ordr)
 data = data[,rand_ordr]
 
@@ -65,9 +68,9 @@ lambda = 1
 B = partitionDAG::partial5(X = as.matrix(data),
                            l = lambda, 
                            m1 = 6, 
-                           m2 = 11, 
-                           m3 = 18, 
-                           m4 = 23)$B
+                           m2 = 10, 
+                           m3 = 17, 
+                           m4 = 22)$B
 colnames(B) = colnames(data)
 row.names(B) = colnames(data)
 B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
@@ -75,18 +78,18 @@ graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, d
 elB = apply(get.edgelist(graphB), 1, paste, collapse="-")
 E(graphB)$color <- ifelse(elB %in% eltrue, "red", "gray80")
 plot(graphB, layout = coords5wTI(), vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
-     vertex.label.cex = 0.5, edge.arrow.size = 0.25, edge.curved=.3, edge.color=ecol)
+     vertex.label.cex = 0.5, edge.arrow.size = 0.25, edge.curved=.3)
 ```
 
 ```{r network5, echo=TRUE, warning=FALSE, message=FALSE, error=FALSE, results='hide' }
-lambda = 1
+lambda = 0.01
 B = partitionDAG::partial5_inc(X = as.matrix(data),
                            l = lambda, 
                            m1 = 6, 
-                           m2 = 11, 
-                           m3 = 18, 
-                           m4 = 23,
-                           l1= 1, l2= 100, l3= 400, l4= 600,
+                           m2 = 10, 
+                           m3 = 17, 
+                           m4 = 22,
+                           l1= 1, l2= 2, l3= 1000, l4= 20000,
                            )$B
 colnames(B) = colnames(data)
 row.names(B) = colnames(data)
@@ -94,20 +97,20 @@ B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
 graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
 elB = apply(get.edgelist(graphB), 1, paste, collapse="-")
 E(graphB)$color <- ifelse(elB %in% eltrue, "red", "gray80")
-plot(graphB, layout = coords5wTI(), vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
+plot(graphB, layout = coords5wTIwoSM(), vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
      vertex.label.cex = 0.5, edge.arrow.size = 0.25, edge.curved=.4)
 
 
 ```
 
 ```{r network5, echo=TRUE, warning=FALSE, message=FALSE, error=FALSE, results='hide' }
-lambda = 1
+lambda = 0.1
 B = partitionDAG::partial5_inc(X = as.matrix(data),
                            l = lambda, 
                            m1 = 6, 
-                           m2 = 11, 
-                           m3 = 18, 
-                           m4 = 23,
+                           m2 = 10, 
+                           m3 = 17, 
+                           m4 = 22,
                            l1= 1, l2= 100, l3= 100, l4= 100,
                            )$B
 colnames(B) = colnames(data)
@@ -146,14 +149,14 @@ plot(graphB, layout = coords5wTI(), vertex.size=15, vertex.label.dist = .1, vert
 
 ```{r network5pdag, echo=TRUE, warning=FALSE, message=FALSE, error=FALSE, results='hide' }
 B = pcalg_custom(X = as.matrix(data),
-                 a = 0.99)$B
+                 a = 0.95)$B
 colnames(B) = colnames(data)
 row.names(B) = colnames(data)
 B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
 graphB = graph_from_adjacency_matrix(t(B), mode = 'directed', weighted = TRUE, diag = FALSE)
 elB = apply(get.edgelist(graphB), 1, paste, collapse="-")
 E(graphB)$color <- ifelse(elB %in% eltrue, "red", "gray80")
-plot(graphB, layout = coords5wTI(), vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
+plot(graphB, layout = coords5wTIwoSM(), vertex.size=15, vertex.label.dist = .1, vertex.color = 'SkyBlue2',
      vertex.label.cex = 0.5, edge.arrow.size = 0.25, edge.curved=.3)
 
 
