@@ -64,7 +64,7 @@ eltrue = apply(get.edgelist(graphT), 1, paste, collapse="-")
 In this section we run partition Dag with 5 groups:
 
 ```{r network5, echo=TRUE, warning=FALSE, message=FALSE, error=FALSE, results='hide' }
-lambda = 1
+lambda = 4
 B = partitionDAG::partial5(X = as.matrix(data),
                            l = lambda, 
                            m1 = 6, 
@@ -111,7 +111,7 @@ B = partitionDAG::partial5_inc(X = as.matrix(data),
                            m2 = 10, 
                            m3 = 17, 
                            m4 = 22,
-                           l1= 1, l2= 100, l3= 100, l4= 100,
+                           l1= 1, l2= 1, l3= 100, l4= 100,
                            )$B
 colnames(B) = colnames(data)
 row.names(B) = colnames(data)
@@ -149,7 +149,7 @@ plot(graphB, layout = coords5wTI(), vertex.size=15, vertex.label.dist = .1, vert
 
 ```{r network5pdag, echo=TRUE, warning=FALSE, message=FALSE, error=FALSE, results='hide' }
 B = pcalg_custom(X = as.matrix(data),
-                 a = 0.95)$B
+                 a = 0.999)$B
 colnames(B) = colnames(data)
 row.names(B) = colnames(data)
 B = B[invPerm(rand_ordr),invPerm(rand_ordr)]
@@ -164,7 +164,7 @@ plot(graphB, layout = coords5wTIwoSM(), vertex.size=15, vertex.label.dist = .1, 
 
 ```{r network5pdagBGt, echo=TRUE, warning=FALSE, message=FALSE, error=FALSE, results='hide' }
 B = pcalg_addBG5_t(X = as.matrix(data),
-                 a = 0.99,
+                 a = 0.999,
                  m1 = 6, 
                  m2 = 11, 
                  m3 = 18, 
