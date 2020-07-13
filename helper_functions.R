@@ -42,9 +42,10 @@ softhresh <- function(x,l){
 
 Bii <- function(S,B,i){
   temp = sum(S[i,-i]*B[i,-i])
-  out = (-2*temp + sqrt(4*temp^2+8*S[i,i]))/(4*S[i,i])
+  out = (-temp + sqrt(temp^2+4*S[i,i]))/(2*S[i,i])
   out
 }
+
 
 Bki <- function(S,B,k,i,l){
   out = softhresh(-2*sum(S[i,-i]*B[k,-i])/(4*S[i,i]),l/(4*S[i,i]))
