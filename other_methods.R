@@ -1,6 +1,7 @@
 source("helper_functions.R")
 library(sparsebn)
 library(pcalg)
+library(ParallelPC)
 
 pcalg_custom <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
   (n = dim(X)[1])
@@ -10,6 +11,20 @@ pcalg_custom <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
+  B = (as.matrix(as(pc.fit, "amat")))
+  diag(B) = 1
+  time = time - proc.time()[3]
+  return(list(B=as.matrix(B),itr = 1, time = time))
+}
+
+pcalg_custom_stable <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
+  (n = dim(X)[1])
+  (p = dim(X)[2])
+  V = sapply(1:p,toString)
+  time = proc.time()[3]
+  pc.fit <- pc_stable(suffStat = list(C = cor(X), n = n),
+                        indepTest = gaussCItest, ## indep.test: partial correlations
+                        alpha=a, labels = V, verbose = FALSE)
   B = (as.matrix(as(pc.fit, "amat")))
   diag(B) = 1
   time = time - proc.time()[3]

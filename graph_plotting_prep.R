@@ -76,28 +76,28 @@ coords5wTI <- function(){
     num2 = num2 + 1
   }
   num2 = -0.75
-  for (i in 7:11){
+  for (i in 7:10){
     coords[i,2] = 7
     coords[i,1] = 2*num2
     num2 = num2 + 1
   }
   
   num2 = 0.75
-  for (i in 12:18){
+  for (i in 11:17){
     coords[i,2] = 6
     coords[i,1] = 2*num2
     num2 = num2 + 1
   }
   
   num2 = -1
-  for (i in 19:23){
+  for (i in 18:22){
     coords[i,2] = 5
     coords[i,1] = 2*num2
     num2 = num2 + 1
   }
   
   num2 = 1
-  for (i in 24:25){
+  for (i in 23:24){
     coords[i,2] = 4
     coords[i,1] = 2*num2
     num2 = num2 + 1
@@ -314,7 +314,7 @@ coords10 <- function(){
 }
 
 coords9wTI <- function(){
-  coords = matrix(0,ncol = 2, nrow = 25)
+  coords = matrix(0,ncol = 2, nrow = 24)
   num2 = 0
   for (i in 1:2){
     coords[i,2] = 10
@@ -350,28 +350,28 @@ coords9wTI <- function(){
   }
   
   num2 = -1
-  for (i in 10:11){
+  for (i in 10:10){
     coords[i,2] = 5
     coords[i,1] = 2*num2
     num2 = num2 + 1
   }
   
   num2 = 1
-  for (i in 12:18){
+  for (i in 11:17){
     coords[i,2] = 4
     coords[i,1] = 2*num2
     num2 = num2 + 1
   }
   
   num2 = -0.5
-  for (i in 19:23){
+  for (i in 18:22){
     coords[i,2] = 3
     coords[i,1] = 2*num2
     num2 = num2 + 1
   }
   
   num2 = 0.5
-  for (i in 24:25){
+  for (i in 23:24){
     coords[i,2] = 2
     coords[i,1] = 2*num2
     num2 = num2 + 1
