@@ -10,6 +10,7 @@ library(pcalg)
 library(parallel)
 library(igraph)
 library(caret)
+library(pdagDFS)
 library(partitionDAG)
 library(foreach)
 source('metrics_functions.R')
@@ -82,7 +83,7 @@ generate_tables = function(Methods,Btypes,Ns,Seeds, m = NULL, m1=NULL, m2=NULL, 
   return(table1)
 }
 
-ncores <- 6
+ncores <- 4
 
 # Test on p = 40
 
