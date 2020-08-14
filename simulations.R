@@ -90,6 +90,7 @@ ncores <- 4
 values = expand.grid(list(
   Methods = c('pcalg_custom',
               'partial2','partial3','partial4',
+              'partial2_t','partial3_t','partial4_t',
               'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
               'pcalg_addBG2_t','pcalg_addBG3_t','pcalg_addBG4_t',
               'lingam_custom','pcalg_custom_par','pcalg_custom_stable'),
@@ -129,6 +130,7 @@ print('table1')
 values = expand.grid(
   list(
     Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2', 
+                'partial2_t',
                 'pcalg_addBG2_t','lingam_custom','pcalg_custom_par','pcalg_custom_stable'),
     nlambda = c(30),
     Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
@@ -163,6 +165,7 @@ save(table1, file = "table1.RData")
 values = expand.grid(list(
 Methods = c('pcalg_custom','ccdr_paper_t',
              'partial2','partial3','partial4',
+            'partial2_t','partial3_t','partial4_t',
              'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
              'pcalg_addBG2_t','pcalg_addBG3_t','pcalg_addBG4_t',
              'lingam_custom','pcalg_custom_par','pcalg_custom_stable'),
@@ -228,6 +231,7 @@ print('table4')
 values = expand.grid(list(
   Methods = c('pcalg_custom',
               'partial2','partial3','partial4',
+              'partial2_t','partial3_t','partial4_t',
               'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
               'pcalg_addBG2_t','pcalg_addBG3_t','pcalg_addBG4_t',
               'lingam_custom','pcalg_custom_par','pcalg_custom_stable'),
@@ -265,6 +269,7 @@ print('table5')
 values = expand.grid(list(
   Methods = c('pcalg_custom',
               'partial2','partial3','partial4',
+              'partial2_t','partial3_t','partial4_t',
               'pcalg_addBG2','pcalg_addBG3','pcalg_addBG4',
               'pcalg_addBG2_t','pcalg_addBG3_t','pcalg_addBG4_t',
               'lingam_custom','pcalg_custom_par','pcalg_custom_stable'),
