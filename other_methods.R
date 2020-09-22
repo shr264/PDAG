@@ -9,7 +9,7 @@ partial2_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NU
   (n = dim(X)[1])
   (p = dim(X)[2])
   V = sapply(1:p,toString)
-  run = partial2(X=X,l=lambda[i], a=alpha[i], m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
+  run = partial2(X=X,l=l, a=a, m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
   return(list(B=as.matrix(t(run$B)),itr = 1, time = run$time))
 }
 
@@ -17,7 +17,7 @@ partial3_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NU
   (n = dim(X)[1])
   (p = dim(X)[2])
   V = sapply(1:p,toString)
-  run = partial3(X=X,l=lambda[i], a=alpha[i], m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
+  run = partial3(X=X,l=l, a=a, m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
   return(list(B=as.matrix(t(run$B)),itr = 1, time = run$time))
 }
 
@@ -25,7 +25,7 @@ partial4_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NU
   (n = dim(X)[1])
   (p = dim(X)[2])
   V = sapply(1:p,toString)
-  run = partial4(X=X,l=lambda[i], a=alpha[i], m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
+  run = partial4(X=X,l=l, a=a, m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
   return(list(B=as.matrix(t(run$B)),itr = 1, time = run$time))
 }
 
