@@ -72,7 +72,7 @@ cpDagtoDagWorst = function(Bhat, B){
     return(Bhat)
   }
   if(sum((Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0))>0){
-    Bhat[t(Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0)] = 0
+    Bhat[t(Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B == 0)] = 0
   }
   
   return(Bhat)
@@ -81,7 +81,7 @@ cpDagtoDagWorst = function(Bhat, B){
 
 getL = function(B, B_truth=NULL){
   if(!is.null(B_truth)){
-    B = cpDagtoDagBest(B,B_truth) 
+    B = cpDagtoDagWorst(B,B_truth) 
   }
   B = (abs(B) != 0)*1
   L = lower.tri(B)*B - t(B*upper.tri(B))
