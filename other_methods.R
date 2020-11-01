@@ -9,6 +9,7 @@ partial2_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NU
   (n = dim(X)[1])
   (p = dim(X)[2])
   V = sapply(1:p,toString)
+  set.seed(5)
   run = partial2(X=X,l=l, a=a, m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
   return(list(B=as.matrix(t(run$B)),itr = 1, time = run$time))
 }
@@ -17,6 +18,7 @@ partial3_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NU
   (n = dim(X)[1])
   (p = dim(X)[2])
   V = sapply(1:p,toString)
+  set.seed(5)
   run = partial3(X=X,l=l, a=a, m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
   return(list(B=as.matrix(t(run$B)),itr = 1, time = run$time))
 }
@@ -25,6 +27,7 @@ partial4_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NU
   (n = dim(X)[1])
   (p = dim(X)[2])
   V = sapply(1:p,toString)
+  set.seed(5)
   run = partial4(X=X,l=l, a=a, m1=m1,m2=m2,m3=m3,m4=m4,m5=m5,m6=m6,m7=m7,m8=m8,m9=m9)
   return(list(B=as.matrix(t(run$B)),itr = 1, time = run$time))
 }
@@ -34,6 +37,7 @@ pcalg_custom <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -48,6 +52,7 @@ pcalg_custom_stable <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=N
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc_stable(suffStat = list(C = cor(X), n = n),
                         indepTest = gaussCItest, ## indep.test: partial correlations
                         alpha=a, labels = V, verbose = FALSE)
@@ -62,6 +67,7 @@ pcalg_custom_par <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc_parallel(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -76,6 +82,7 @@ pcalg_addBG2 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -87,11 +94,30 @@ pcalg_addBG2 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
   return(list(B=as.matrix(B),itr = 1, time = time))
 }
 
+addBG2 <- function(B, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
+  time = proc.time()[3]
+  (p = dim(B)[2])
+  B = as.matrix(B)
+  ##print(m1,m2,m3,m4)
+  if(is.matrix(as.matrix(B))){
+    B = addBgKnowledge_helper(B, m1=0, m2=m1, m3=p)}
+  if(!is.null(B)){
+    diag(B) = 1   
+  }
+  else {
+    B = NA
+  }
+  time = time - proc.time()[3]
+  B = as.matrix(B)   
+  return(list(B=as.matrix(B),itr = 1, time = time))
+}
+
 pcalg_addBG2_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
   (n = dim(X)[1])
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -99,6 +125,21 @@ pcalg_addBG2_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m
   if(is.matrix(as.matrix(B))){
     B = addBgKnowledge_helper_t(B, m1=0, m2=m1, m3=p)}
   diag(B) = 1   
+  time = time - proc.time()[3]
+  B = as.matrix(B)
+  return(list(B=as.matrix(B),itr = 1, time = time))
+}
+
+addBG2_t <- function(B, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
+  (p = dim(B)[2])
+  time = proc.time()[3]
+  B = as.matrix(B)
+  ##print(m1,m2,m3,m4)
+  if(is.matrix(as.matrix(B))){
+    B = addBgKnowledge_helper_t(B, m1=0, m2=m1, m3=p)}
+  if(!is.null(B)){
+    diag(B) = 1 
+  } else {B = NA}
   time = time - proc.time()[3]
   return(list(B=as.matrix(B),itr = 1, time = time))
 }
@@ -108,6 +149,7 @@ pcalg_addBG3 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -127,6 +169,7 @@ pcalg_addBG3_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -135,9 +178,47 @@ pcalg_addBG3_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m
     B = addBgKnowledge_helper_t(B, m1=0, m2=m1, m3=p)}
   if(is.matrix(as.matrix(B))){ 
     B = addBgKnowledge_helper_t(B, m1=m1, m2=m2, m3=p)}
-  diag(B) = 1
+  if(!is.null(B)){
+    diag(B) = 1 
+  } else {B = NA}
   
   time = time - proc.time()[3]
+  return(list(B=as.matrix(B),itr = 1, time = time))
+}
+
+addBG3 <- function(B, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
+  (p = dim(B)[2])
+  time = proc.time()[3]
+  B = as.matrix(B)
+  ##print(m1,m2,m3,m4)
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper(B, m1=0, m2=m1, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper(B, m1=m1, m2=m2, m3=p)}
+  if(!is.null(B)){
+    diag(B) = 1 
+  } else {B = NA}
+  
+  time = time - proc.time()[3]
+  B = as.matrix(B)
+  return(list(B=as.matrix(B),itr = 1, time = time))
+}
+
+addBG3_t <- function(B, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
+  (p = dim(B)[2])
+  time = proc.time()[3]
+  B = as.matrix(B)
+  ##print(m1,m2,m3,m4)
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper_t(B, m1=0, m2=m1, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper_t(B, m1=m1, m2=m2, m3=p)}
+  if(!is.null(B)){
+    diag(B) = 1 
+  } else {B = NA}
+  
+  time = time - proc.time()[3]
+  B = as.matrix(B)
   return(list(B=as.matrix(B),itr = 1, time = time))
 }
 
@@ -146,6 +227,7 @@ pcalg_addBG4 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -166,6 +248,7 @@ pcalg_addBG4_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -176,8 +259,48 @@ pcalg_addBG4_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m
     B = addBgKnowledge_helper_t(B, m1=m1, m2=m2, m3=p)}
   if(is.matrix(as.matrix(B))){ 
     B = addBgKnowledge_helper_t(B, m1=m2, m2=m3, m3=p)}
-  diag(B) = 1
+  if(!is.null(B)){
+    diag(B) = 1 
+  } else {B = NA}
   time = time - proc.time()[3]
+  return(list(B=as.matrix(B),itr = 1, time = time))
+}
+
+addBG4 <- function(B, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
+  (p = dim(B)[2])
+  time = proc.time()[3]
+  B = as.matrix(B)
+  ###print(m1,m2,m3,m4)
+  if(is.matrix(as.matrix(B))){  
+    B = addBgKnowledge_helper(B, m1=0, m2=m1, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper(B, m1=m1, m2=m2, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper(B, m1=m2, m2=m3, m3=p)}
+  if(!is.null(B)){
+    diag(B) = 1 
+  } else {B = NA}
+  time = time - proc.time()[3]
+  B = as.matrix(B)
+  return(list(B=as.matrix(B),itr = 1, time = time))
+}
+
+addBG4_t <- function(B, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
+  (p = dim(B)[2])
+  time = proc.time()[3]
+  B = as.matrix(B)
+  ##print(m1,m2,m3,m4)
+  if(is.matrix(as.matrix(B))){  
+    B = addBgKnowledge_helper_t(B, m1=0, m2=m1, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper_t(B, m1=m1, m2=m2, m3=p)}
+  if(is.matrix(as.matrix(B))){ 
+    B = addBgKnowledge_helper_t(B, m1=m2, m2=m3, m3=p)}
+  if(!is.null(B)){
+    diag(B) = 1 
+  } else {B = NA}
+  time = time - proc.time()[3]
+  B = as.matrix(B)
   return(list(B=as.matrix(B),itr = 1, time = time))
 }
 
@@ -186,6 +309,7 @@ pcalg_addBG5 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -208,6 +332,7 @@ pcalg_addBG5_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -230,6 +355,7 @@ pcalg_addBG9 <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -260,6 +386,7 @@ pcalg_addBG9_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m
   (p = dim(X)[2])
   V = sapply(1:p,toString)
   time = proc.time()[3]
+  set.seed(5)
   pc.fit <- pc(suffStat = list(C = cor(X), n = n),
                indepTest = gaussCItest, ## indep.test: partial correlations
                alpha=a, labels = V, verbose = FALSE)
@@ -287,6 +414,7 @@ pcalg_addBG9_t <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m
 
 lingam_custom <- function(X,l=NULL, a = NULL, m1=NULL,m2=NULL,m3=NULL,m4=NULL,m5=NULL,m6=NULL,m7=NULL,m8=NULL,m9=NULL,eps = 10^(-4),maxitr = 100, init=NULL){
   time = proc.time()[3]
+  set.seed(5)
   res1 <- lingam(X, verbose = FALSE)
   B = res1$Bpruned
   diag(B) = 1

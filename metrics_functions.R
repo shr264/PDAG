@@ -60,6 +60,8 @@ cpDagtoDagBest = function(Bhat, B){
   if(is.null(B)){
     return(Bhat)
   }
+  B = as.matrix(B)
+  Bhat = as.matrix(Bhat)
   if(sum((Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0))>0){
     Bhat[(Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B == 0)] = 0
   }
@@ -71,6 +73,8 @@ cpDagtoDagWorst = function(Bhat, B){
   if(is.null(B)){
     return(Bhat)
   }
+  B = as.matrix(B)
+  Bhat = as.matrix(Bhat)
   if(sum((Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0))>0){
     Bhat[t(Bhat == t(Bhat) & row(Bhat) != col(Bhat) & Bhat  != 0 & B != 0)] = 0
   }
@@ -154,6 +158,7 @@ get_avg_metrics2 = function(B,
     
     return(auc)
   }
+  
   L = getL(B)
   Lhatlist = getLhatlist(Bhatlist, B)
   auc = rep(0,17)

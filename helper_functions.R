@@ -1,8 +1,10 @@
 addBgKnowledge_helper = function(B, m1=NULL, m2=NULL, m3=NULL){
   for(i in (m1+1):m2){
     for(j in (m2+1):m3){
-      if(B[i,j] == 1 & B[j,i] == 1){
-        B <- addBgKnowledge(gInput = B, x = j, y = i)
+      if(!is.null(B)){
+        if( B[i,j] == 1 & B[j,i] == 1){
+          B <- addBgKnowledge(gInput = B, x = j, y = i)
+        } 
       }
     }
   }
@@ -12,8 +14,10 @@ addBgKnowledge_helper = function(B, m1=NULL, m2=NULL, m3=NULL){
 addBgKnowledge_helper_t = function(B, m1=NULL, m2=NULL, m3=NULL){
   for(i in (m1+1):m2){
     for(j in (m2+1):m3){
-      if(B[i,j] == 1 & B[j,i] == 1){
-        B <- addBgKnowledge(gInput = B, x = i, y = j)
+      if(!is.null(B)){
+        if(B[i,j] == 1 & B[j,i] == 1){
+          B <- addBgKnowledge(gInput = B, x = i, y = j)
+        }
       }
     }
   }
