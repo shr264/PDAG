@@ -54,12 +54,22 @@ In particular, the lines that generates Table 1 are:
 
 ```
 # Table 1
-generate_tables(Methods = c('pcalg_custom','ccdr_paper_t','partial2'),
-              Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3', 'genB_mult_Ecoli1','genB_mult_Ecoli2'),
-              Ns = c(40,50,100,200),
-              Seeds = 1:20,
-              m = 2,
-              m1 = 25)
+values = expand.grid(
+  list(
+    Methods = c('pcalg_custom','ccdr_paper_t','partial2','pcalg_addBG2', 
+                'partial2_t',
+                'pcalg_addBG2_t','lingam_custom','pcalg_custom_par','pcalg_custom_stable'),
+    nlambda = c(30),
+    Btypes = c('genB_mult_Yeast1','genB_mult_Yeast2','genB_mult_Yeast3',
+              'genB_mult_Ecoli1','genB_mult_Ecoli2'),
+    Ns = c(40,50,100,200),
+    Seeds = 1:10,
+    m = c(2),
+    m1 = c(25)), stringsAsFactors = FALSE)
+
+
+table1 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$nlambda, Btype=values$Btypes, n=values$Ns, seed=values$Seeds, m=values$m, m1=values$m1,
+                  mc.cores=ncores)
 ```
 
 # Authors
