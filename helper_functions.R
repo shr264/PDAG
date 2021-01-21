@@ -1,3 +1,43 @@
+addBgKnowledge_helper = function(B, m1=NULL, m2=NULL, m3=NULL){
+  for(i in (m1+1):m2){
+    for(j in (m2+1):m3){
+      if(!is.null(B)){
+        if( B[i,j] == 1 & B[j,i] == 1){
+          B <- addBgKnowledge(gInput = B, x = j, y = i)
+        } 
+      }
+    }
+  }
+  return(B) 
+}
+
+addBgKnowledge_helper_t = function(B, m1=NULL, m2=NULL, m3=NULL){
+  for(i in (m1+1):m2){
+    for(j in (m2+1):m3){
+      if(!is.null(B)){
+        if(B[i,j] == 1 & B[j,i] == 1){
+          B <- addBgKnowledge(gInput = B, x = i, y = j)
+        }
+      }
+    }
+  }
+  return(B) 
+}
+
+addBgKnowledge_helper_t_2 = function(B, m1=NULL, m2=NULL, m3=NULL){
+  for(i in (m1+1):m2){
+    for(j in (m2+1):m3){
+      if(!is.null(B)){
+        if((B[i,j] == 1 & B[j,i] == 1) | (B[i,j] == 0 & B[j,i] == 1)){
+          B <- addBgKnowledge(gInput = B, x = i, y = j)
+        }
+      }
+    }
+  }
+  return(B) 
+}
+
+
 dfs <- function(node,p,graph){
   nodes_to_visit = setdiff(1:p,node)
   paths = which(graph[node,]>0)
@@ -19,9 +59,10 @@ softhresh <- function(x,l){
 
 Bii <- function(S,B,i){
   temp = sum(S[i,-i]*B[i,-i])
-  out = (-2*temp + sqrt(4*temp^2+8*S[i,i]))/(4*S[i,i])
+  out = (-temp + sqrt(temp^2+4*S[i,i]))/(2*S[i,i])
   out
 }
+
 
 Bki <- function(S,B,k,i,l){
   out = softhresh(-2*sum(S[i,-i]*B[k,-i])/(4*S[i,i]),l/(4*S[i,i]))
