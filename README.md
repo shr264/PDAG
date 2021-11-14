@@ -72,5 +72,9 @@ table1 = mcmapply(get_metrics_by_method, method=values$Methods, nlambda=values$n
                   mc.cores=ncores)
 ```
 
+## Python version
+
+The Python version and related code is available at https://github.com/shr264/pyPDAG.
+
 # Authors
 Syed Rahman
